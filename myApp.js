@@ -2,55 +2,11 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = app;
 const api = require('./server.js');
 app.use(express.static('public'));
 app.use(helmet.hidePoweredBy());
+app.use(helmet.frameguard({action: 'DENY'}))
 app.disable('strict-transport-security');
 app.use('/_api', api);
 app.get("/", function (request, response) {
